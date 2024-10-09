@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garena Themed Interactive Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Màu nền sáng */
+        }
+
+        header {
+            background-color: #000; /* Màu đen chủ đạo */
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu > li {
+            position: relative;
+        }
+
+        .menu > li > a {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            background-color: #000; /* Màu nền của các mục menu */
+            transition: background-color 0.3s ease;
+        }
+
+        .menu > li > a:hover {
+            background-color: #d32f2f; /* Màu đỏ khi hover */
+            transition: background-color 0.3s ease;
+        }
+
+        .menu > li > a img {
+            margin-right: 10px;
+            height: 20px;
+        }
+
+        .submenu {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #d32f2f; /* Màu nền đỏ cho submenu */
+            display: none;
+            min-width: 200px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .submenu li a {
+            padding: 10px 15px;
+            color: white;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            background-color: #d32f2f;
+            transition: background-color 0.3s ease;
+        }
+
+        .submenu li a:hover {
+            background-color: #b71c1c; /* Màu đỏ đậm hơn khi hover submenu */
+        }
+
+        .menu li:hover .submenu {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Submenu 2 cấp */
+        .submenu-2 {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            display: none;
+            background-color: #b71c1c; /* Màu nền submenu cấp 2 */
+            min-width: 200px;
+        }
+
+        .submenu li:hover .submenu-2 {
+            display: block;
+        }
+
+        /* Hiệu ứng mờ dần */
+        .submenu, .submenu-2 {
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Hình ảnh to hiển thị dưới menu */
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 80%;
+            height: auto;
+            border: 2px solid #ddd;
+            padding: 10px;
+            background-color: white;
+        }
+
+        /* Thêm kiểu cho hình ảnh */
+        .image-container img:hover {
+            transform: scale(1.05); /* Phóng to hình ảnh khi hover */
+            transition: transform 0.3s ease;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            background-color: #000; /* Footer màu đen */
+            color: white;
+        }
+
+        footer a {
+            color: #d32f2f;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+                <li><a href="#" onclick="changeImage('home')"><img src="https://www.garena.com/favicon.ico" alt="Home">Home</a></li>
+                <li><a href="#" onclick="changeImage('games')"><img src="https://www.garena.com/favicon.ico" alt="Games">Games</a>
+                    <ul class="submenu">
+                        <li><a href="#" onclick="changeImage('lol')">League of Legends</a>
+                            <ul class="submenu-2">
+                                <li><a href="#" onclick="changeImage('champions')">Champions</a></li>
+                                <li><a href="#" onclick="changeImage('skins')">Skins</a></li>
+                                <li><a href="#" onclick="changeImage('tournaments')">Tournaments</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" onclick="changeImage('freefire')">Free Fire</a></li>
+                        <li><a href="#" onclick="changeImage('aov')">Arena of Valor</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="changeImage('esports')"><img src="https://www.garena.com/favicon.ico" alt="Esports">Esports</a></li>
+                <li><a href="#" onclick="changeImage('news')"><img src="https://www.garena.com/favicon.ico" alt="News">News</a>
+                    <ul class="submenu">
+                        <li><a href="#" onclick="changeImage('updates')">Updates</a></li>
+                        <li><a href="#" onclick="changeImage('events')">Events</a></li>
+                        <li><a href="#" onclick="changeImage('articles')">Articles</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="changeImage('support')"><img src="https://www.garena.com/favicon.ico" alt="Support">Support</a></li>
+                <li><a href="#" onclick="changeImage('login')"><img src="https://www.garena.com/favicon.ico" alt="Login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="image-container">
+        <img id="main-image" src="https://via.placeholder.com/800x400?text=Welcome+to+Garena" alt="Main Image">
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Garena. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        function changeImage(section) {
+            let imageUrl = '';
+
+            switch (section) {
+                case 'home':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Home+Page';
+                    break;
+                case 'games':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Games';
+                    break;
+                case 'lol':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=League+of+Legends';
+                    break;
+                case 'champions':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Champions';
+                    break;
+                case 'skins':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Skins';
+                    break;
+                case 'tournaments':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Tournaments';
+                    break;
+                case 'freefire':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Free+Fire';
+                    break;
+                case 'aov':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Arena+of+Valor';
+                    break;
+                case 'esports':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Esports';
+                    break;
+                case 'news':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=News';
+                    break;
+                case 'updates':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Updates';
+                    break;
+                case 'events':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Events';
+                    break;
+                case 'articles':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Articles';
+                    break;
+                case 'support':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Support';
+                    break;
+                case 'login':
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Login';
+                    break;
+                default:
+                    imageUrl = 'https://via.placeholder.com/800x400?text=Welcome+to+Garena';
+            }
+
+            document.getElementById('main-image').src = imageUrl;
+    }
+</script>
+</body>
+</html>
